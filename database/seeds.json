@@ -1,0 +1,28 @@
+[
+    {
+    "name": "John Doe",
+    "email":"testathlete@email.com",
+    "height": "5'10",     
+    "weight": "180", 
+    "image":  "https://assets.isu.pub/document-structure/210625151000-f8f567c36435f858111bc1e5eedc6dcd/v1/469872206c460d1b7f1f5f373821c371.jpeg",
+    "gradDate": "2023", 
+    "currentHS": "Smokey Hill High School",   
+    "sport":  "Football", 
+    "postionPlayed": "Wide Receiver",
+    "isPlayer": true 
+    },
+    {
+    "name": "Jane Doe",
+    "email":"email@email.com",
+    "height": "6'10",
+    "weight": "280",
+    "image":  "https://img.freepik.com/free-vector/athlete-doing-american-football-white_1308-41302.jpg?w=2000",
+    "gradDate": "2024",
+    "currentHS": "Rangeview High School",
+    "sport":  "Football",
+    "postionPlayed": "Defensive End",
+    "isPlayer": true   
+    }
+]
+
+

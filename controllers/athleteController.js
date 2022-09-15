@@ -50,6 +50,17 @@ const deleteAthlete = (req, res) => {
    })
 }
 
+const findAthlete = (req, res) => {
+    Athlete.findById(req.params.id, (err, athlete) => {
+        if(err){
+            res.status(400).json(err)
+            return
+        }
+        console.log(athlete)
+        res.json(athlete)
+    })
+}
+
 
 
  
@@ -57,6 +68,7 @@ module.exports = {
     index,
     createNewAthlete, 
     updateAthleteProfile, 
-    deleteAthlete
+    deleteAthlete, 
+    findAthlete
 
 }

@@ -5,7 +5,12 @@ const morgan = require('morgan')
 const cors = require('cors');
 const athleteRoutes = require('../Backend-Project4/routes/athleteRoutes')
 require('./database/connection');
+//require('dotenv').config();
 
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 //var port = normalizePort(process.env.PORT || '8000');
 
 //routes
@@ -13,6 +18,7 @@ require('./database/connection');
 //const comicRoute = require("./routes/api/comicRoutes");
 
 app.use('/highschoolathlete', athleteRoutes)
+app.use('/api/users', require('./routes/api/users'));
 
 app.get('/', (req, res) => {
     res.json('Welcome')
@@ -23,15 +29,12 @@ app.get('/', (req, res) => {
 //middleware
 //app.use(methodOverride("_method"));
 //app.use(logger("dev"));
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+
 //app.use(express.static(path.join(__dirname, "build")));
 
 
 //routes 
-//app.use("/api/users", require("./routes/api/userRoutes"));
-//app.use("/api/comics", require("./routes/api/comicRoutes"));
+//app.use("/api/users", userRoute);
 
 
 app.listen(port, () => {
