@@ -4,15 +4,17 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup,
-  login
+  login, 
+  show
 };
 
 async function signup(req, res) {
-  const user = new User(req.body);
   try {
+  const user = new User(req.body);
+  
     await user.save();
     const token = createJWT(user);
-    res.json({ token });
+    res.json(token);
     
 
   } catch (err) {
@@ -20,7 +22,7 @@ async function signup(req, res) {
     
     res.status(400).json(err);
 
-  } return res.redirect('/api/users');
+  } //return res.redirect('/api/users');
 }
 
 async function login(req, res) {
@@ -39,6 +41,12 @@ async function login(req, res) {
     return res.status(401).json(err);
   }
 }
+
+async function show(req, res) {
+  const user = await User.findById(req.params.id);
+  res.json(user);
+}
+
 
 /*----- Helper Functions -----*/
 

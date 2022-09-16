@@ -14,8 +14,7 @@ app.use(morgan('dev'));
 //var port = normalizePort(process.env.PORT || '8000');
 
 //routes
-//const userRoute = require("./routes/api/userRoutes");
-//const comicRoute = require("./routes/api/comicRoutes");
+
 
 app.use('/highschoolathlete', athleteRoutes)
 app.use('/api/users', require('./routes/api/users'));
