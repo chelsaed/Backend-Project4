@@ -2,11 +2,19 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
-module.exports = {
-  signup,
-  login, 
-  show
-};
+
+
+const index = (req, res) => {
+  User.find({}, (err, athlete)=>{
+      if(err){
+          res.status(400).json(err)
+          return
+      }
+
+      res.json(athlete)
+
+  })
+}
 
 async function signup(req, res) {
   try {
@@ -46,8 +54,13 @@ async function show(req, res) {
   const user = await User.findById(req.params.id);
   res.json(user);
 }
-
-
+async function addAthlete(req, res) {
+  console.log("req.body", req.body);
+  const user = await User.findById(req.params.id);
+  user.athlete.push(req.body);
+  await user.save();
+  res.json(user);
+}
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
@@ -57,3 +70,12 @@ function createJWT(user) {
     {expiresIn: '24h'}
   );
 }
+
+
+module.exports = {
+  signup,
+  login, 
+  show, 
+  addAthlete,
+  index
+};

@@ -5,7 +5,7 @@ const morgan = require('morgan')
 const cors = require('cors');
 const athleteRoutes = require('../Backend-Project4/routes/athleteRoutes')
 require('./database/connection');
-//require('dotenv').config();
+require('dotenv').config();
 
 app.use(cors());
 app.use(express.json());
@@ -19,10 +19,6 @@ app.use(morgan('dev'));
 app.use('/highschoolathlete', athleteRoutes)
 app.use('/api/users', require('./routes/api/users'));
 
-app.get('/', (req, res) => {
-    res.json('Welcome')
-})
-
 //const port = process.env.PORT || 4001;
 
 //middleware
@@ -32,8 +28,6 @@ app.get('/', (req, res) => {
 //app.use(express.static(path.join(__dirname, "build")));
 
 
-//routes 
-//app.use("/api/users", userRoute);
 
 
 app.listen(port, () => {
