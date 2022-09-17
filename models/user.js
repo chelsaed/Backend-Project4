@@ -2,11 +2,21 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
-
+const athleteSchema = new mongoose.Schema({
+  height: String, 
+  weight: String, 
+  image: String, 
+  gradDate: String, 
+  currentHS: String, 
+  sport: String, 
+  postionPlayed: String,
+  isPlayer: Boolean, 
+})
 const userSchema = new mongoose.Schema({
   name: String,
   email: {type: String, required: true, lowercase: true, unique: true},
-  password: String
+  password: String,
+  athlete: [athleteSchema]
 }, {
   timestamps: true
 });
